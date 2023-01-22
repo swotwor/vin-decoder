@@ -11,7 +11,7 @@ const Header = () => {
             <Title>
                 VIN DECODER
             </Title>
-            <Line />
+            <Line/>
         </Wrapper>
     );
 };
