@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Title,
     Header,
@@ -7,42 +7,68 @@ import {
     VinInfoValue,
     VinInfoContainer,
 } from "./styledComponents";
+import ExtendedDescriptionsWindow from "./components/extendedDescriptionsWindow";
 
 const Card = ({vinInfo}) => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    console.log(vinInfo);
+    const [isOpenFullList, setIsOpenFullList] = useState(false);
+    const [isOpenExtendedDescription, setIsOpenExtendedDescription] = useState(false);
+
+    const handleHover = event => {
+        setIsOpenExtendedDescription(prevState => !prevState);
+        event.preventDefault();
+        event.stopPropagation();
+    }
 
     return (
-        <Wrapper onClick={() => setIsOpen(prevState => !prevState)}>
+        <Wrapper onClick={() => setIsOpenFullList(prevState => !prevState)}>
             <Header>
                 <Title>
                     {vinInfo.VIN}
                 </Title>
                 {
-                    isOpen
+                    isOpenFullList
                     ? vinInfo.decodeVin.map((item, index) => {
                             return (
-                                <VinInfoContainer key={index}>
-                                    <VinInfoName>
+                                <VinInfoContainer
+                                    key={index}
+                                >
+                                    <VinInfoName
+                                        onMouseEnter={handleHover}
+                                        onMouseLeave ={handleHover}
+                                    >
                                         {item.Variable}
                                     </VinInfoName>
                                     {' ' + '-' + ' '}
                                     <VinInfoValue>
                                         {item.Value}
                                     </VinInfoValue>
+                                    {
+                                        isOpenExtendedDescription
+                                            ? <ExtendedDescriptionsWindow decodeID={item.VariableId}/>
+                                            : null
+                                    }
                                 </VinInfoContainer>
                             )
                         })
                     : vinInfo.decodeVin.slice(0,5).map((item, index) => {
+                            console.log(item)
                             return (
                                 <VinInfoContainer key={index}>
-                                    <VinInfoName>
+                                    <VinInfoName
+                                        onMouseEnter={() => setIsOpenExtendedDescription(prevState => !prevState)}
+                                        onMouseLeave ={() => setIsOpenExtendedDescription(prevState => !prevState)}
+                                    >
                                         {item.Variable}
                                     </VinInfoName>
                                     {' ' + '-' + ' '}
                                     <VinInfoValue>
                                         {item.Value}
                                     </VinInfoValue>
+                                    {
+                                        isOpenExtendedDescription
+                                            ? <ExtendedDescriptionsWindow decodeID={item.VariableId}/>
+                                            : null
+                                    }
                                 </VinInfoContainer>
                             )
                         })

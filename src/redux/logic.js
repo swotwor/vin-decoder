@@ -3,8 +3,7 @@ import axios from 'axios';
 export const getSearchResult = async (vinNumber, setAddedResult) => {
     await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vinNumber}?format=json`)
         .then(function (response) {
-            // setAddedResult(response.data.Results);
-            filteredResult(response.data, setAddedResult);
+            return filteredResult(response.data, setAddedResult);
         })
         .catch(function (error) {
             // handle error
@@ -18,8 +17,7 @@ export const getSearchResult = async (vinNumber, setAddedResult) => {
 export const getVehicleVariablesList = async (setVehicleVariablesList) => {
     await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getvehiclevariablelist?format=json`)
         .then(function (response) {
-            // setAddedResult(response.data.Results);
-            filteredVehicleVariablesList(response.Results, setVehicleVariablesList);
+            setVehicleVariablesList(filteredVehicleVariablesList(response.data.Results));
         })
         .catch(function (error) {
             // handle error
@@ -35,7 +33,6 @@ const filteredResult = (someResult, setAddedResult) => {
         VIN: '',
         decodeVin: [],
     };
-    console.log(someResult.SearchCriteria);
     temporaryStorage.VIN = someResult.SearchCriteria;
     someResult.Results.map(item => {
         if (item.Value) {
@@ -45,10 +42,10 @@ const filteredResult = (someResult, setAddedResult) => {
     setAddedResult(temporaryStorage);
 };
 
-const filteredVehicleVariablesList = (variablesLists, setVehicleVariablesList) => {
+const filteredVehicleVariablesList = (variablesLists) => {
     const newVariablesList = {};
     variablesLists.map(item => {
         newVariablesList[item.ID] = item.Description
     })
-    setVehicleVariablesList(newVariablesList);
+    return newVariablesList;
 };

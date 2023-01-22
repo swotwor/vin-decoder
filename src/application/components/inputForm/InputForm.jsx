@@ -11,7 +11,7 @@ import {
 const InputForm = () => {
     const dispatch = useDispatch();
     const state = useSelector(state => state.state);
-    const setAddedResult = (payload) => dispatch(addedResult(payload))
+    const setAddedResult = payload => dispatch(addedResult(payload))
 
     const clickOnSearchButton = () => {
         getSearchResult(state.searchInput, setAddedResult)

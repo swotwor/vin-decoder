@@ -3,23 +3,24 @@ import Header from "./components/header";
 import InputForm from "./components/inputForm";
 import SearchResults from "./components/searchResults";
 import {
+    useSelector,
+    useDispatch,
+} from "react-redux";
+import {setVehicleVariablesList} from "../redux/reducer";
+import {getVehicleVariablesList} from "../redux/logic";
+import {
     Wrapper,
     InnerContent,
 } from "./styledComponents";
-import {useDispatch, useSelector} from "react-redux";
-import {setVehicleVariablesList} from "../redux/reducer";
-import {getVehicleVariablesList} from "../redux/logic";
 
 const MainComponent = () => {
     const state = useSelector(state => state.state);
     const dispatch = useDispatch();
+    const vehicleVariablesList = payload => dispatch(setVehicleVariablesList(payload));
 
     React.useEffect(() => {
-        getVehicleVariablesList(
-            dispatch(setVehicleVariablesList())
-        )
-        console.log('MainComponent');
-    },[])
+        getVehicleVariablesList(vehicleVariablesList);
+    },[]);
 
     return (
         <Wrapper>
