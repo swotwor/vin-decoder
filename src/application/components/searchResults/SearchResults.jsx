@@ -11,7 +11,7 @@ const SearchResults = () => {
     return (
         <Wrapper>
             {state.arrayWithFoundList.map((vinInfo, index) => {
-                    return (
+                return (
                         <Card key={index} vinInfo={vinInfo}/>
                     )
                 })

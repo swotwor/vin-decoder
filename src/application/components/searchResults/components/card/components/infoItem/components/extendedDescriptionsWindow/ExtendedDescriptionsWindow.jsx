@@ -7,11 +7,10 @@ const ExtendedDescriptionsWindow = ({decodeID}) => {
     console.log(state.vehicleVariablesList[decodeID])
 
     return (
-
         <Wrapper>
             {state.vehicleVariablesList[decodeID]}
         </Wrapper>
     );
 };
 
-export default React.memo(ExtendedDescriptionsWindow);
+export default ExtendedDescriptionsWindow;

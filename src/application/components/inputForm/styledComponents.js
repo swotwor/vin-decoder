@@ -17,13 +17,17 @@ export const Input = styled.input`
   padding: 5px 10px;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   height: 40px;
   width: 100px;
-  background-color: #9eaaff;
+  ${props => props.isButtonActive
+      ? `background-color: #9eaaff;
+         cursor: pointer;`
+      : `background-color: grey;
+         cursor: default;`
+  }
   font-size: 20px;
   line-height: 40px;
   text-align: center;
-  cursor: pointer;
   border-radius: 10px;
 `;

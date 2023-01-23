@@ -1,7 +1,7 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
+import {addedResult} from "../../../redux/reducer";
 import {getSearchResult} from "../../../redux/logic";
-import {useDispatch, useSelector} from "react-redux";
-import {addedResult, setSearchInput} from "../../../redux/reducer";
 import {
     Input,
     Button,
@@ -10,21 +10,30 @@ import {
 
 const InputForm = () => {
     const dispatch = useDispatch();
-    const state = useSelector(state => state.state);
-    const setAddedResult = payload => dispatch(addedResult(payload))
+    const setAddedResult = payload => dispatch(addedResult(payload));
+    const [currentSearchVIN, setCurrentSearchVIN] = React.useState('');
+    const isButtonActive = currentSearchVIN.length > 0;
 
     const clickOnSearchButton = () => {
-        getSearchResult(state.searchInput, setAddedResult)
+        if (isButtonActive) {
+            getSearchResult(currentSearchVIN, setAddedResult);
+        }
+    };
+    const onChangInput = event => {
+        setCurrentSearchVIN(event.target.value);
     };
 
     return (
         <Wrapper>
             <Input
-                onChange={event => dispatch(setSearchInput(event.target.value))}
-                value={state.searchInput}
+                value={currentSearchVIN}
+                onChange={onChangInput}
                 maxLength={17}
             />
-            <Button onClick={() => clickOnSearchButton()}>
+            <Button
+                onClick={() => clickOnSearchButton()}
+                isButtonActive={isButtonActive}
+            >
                 Search
             </Button>
         </Wrapper>
