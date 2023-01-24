@@ -17,6 +17,7 @@ const InputForm = () => {
     const clickOnSearchButton = () => {
         if (isButtonActive) {
             getSearchResult(currentSearchVIN, setAddedResult);
+            setCurrentSearchVIN('');
         }
     };
     const onChangInput = event => {
@@ -29,6 +30,7 @@ const InputForm = () => {
                 value={currentSearchVIN}
                 onChange={onChangInput}
                 maxLength={17}
+                placeholder={'Enter vin-code'}
             />
             <Button
                 onClick={() => clickOnSearchButton()}

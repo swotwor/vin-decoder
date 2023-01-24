@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,12 +9,13 @@ export const Wrapper = styled.div`
 `;
 
 export const InnerContent = styled.div`
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   height: min-content;
   background-color: rgba(222, 184, 135, 0.5);
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 `;

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
+    Help,
     VinInfoName,
     VinInfoValue,
+    VinInfoNameBox,
     VinInfoContainer,
 } from "./styledComponents";
 import ExtendedDescriptionsWindow from "./components/extendedDescriptionsWindow";
@@ -10,24 +12,31 @@ const InfoItem = props => {
     const {
         item,
     } = props;
+    const [isOpenExtendedDescription, setIsOpenExtendedDescription] = useState(false);
+
+    const handleHoverOnNameVariable = () => {
+        setIsOpenExtendedDescription(prevState => !prevState);
+    };
 
     return (
-        <VinInfoContainer >
-            <VinInfoName
-                // onClick={() => setIsOpenExtendedDescription(prevState => !prevState)}
-            >
-                {item.Variable}
-            </VinInfoName>
-            {' ' + '-' + ' '}
+        <VinInfoContainer>
+            <VinInfoNameBox>
+                <VinInfoName>
+                    {item.Variable}
+                </VinInfoName>
+                <Help onClick={handleHoverOnNameVariable}>
+                    ?
+                </Help>
+            </VinInfoNameBox>
             <VinInfoValue>
                 {item.Value}
             </VinInfoValue>
-            <ExtendedDescriptionsWindow decodeID={item.VariableId}/>
-            {/*{*/}
-            {/*    isOpenExtendedDescription*/}
-            {/*        ?
-            {/*        : null*/}
-            {/*}*/}
+            {
+                isOpenExtendedDescription
+                    ? <ExtendedDescriptionsWindow decodeID={item.VariableId}
+                                                  handleHoverOnNameVariable={handleHoverOnNameVariable}/>
+                    : null
+            }
         </VinInfoContainer>
     );
 };

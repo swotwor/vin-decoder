@@ -2,12 +2,15 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import {Wrapper} from "./styledComponents";
 
-const ExtendedDescriptionsWindow = ({decodeID}) => {
+const ExtendedDescriptionsWindow = props => {
+    const {
+        decodeID,
+        handleHoverOnNameVariable,
+    } = props;
     const state = useSelector(state => state.state);
-    console.log(state.vehicleVariablesList[decodeID])
 
     return (
-        <Wrapper>
+        <Wrapper onClick={() => handleHoverOnNameVariable()}>
             {state.vehicleVariablesList[decodeID]}
         </Wrapper>
     );

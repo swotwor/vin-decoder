@@ -20,7 +20,7 @@ const MainComponent = () => {
 
     React.useEffect(() => {
         getVehicleVariablesList(vehicleVariablesList);
-    },[]);
+    }, []);
 
     return (
         <Wrapper>

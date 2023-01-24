@@ -1,31 +1,36 @@
 import axios from 'axios';
+import {vinDecode} from "../apiResult/vinDecode";
+import {variablesList} from "../apiResult/variablesList";
 
 export const getSearchResult = async (vinNumber, setAddedResult) => {
-    await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vinNumber}?format=json`)
-        .then(function (response) {
-            return filteredResult(response.data, setAddedResult);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .finally(function () {
-            // always executed
-        });
+    filteredResult(vinDecode, setAddedResult);
+    // await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vinNumber}?format=json`)
+    //     .then(function (response) {
+    //         return filteredResult(response.data, setAddedResult);
+    //     })
+    //     .catch(function (error) {
+    //         // handle error
+    //         console.log(error);
+    //     })
+    //     .finally(function () {
+    //         // always executed
+    //     });
 };
 
 export const getVehicleVariablesList = async (setVehicleVariablesList) => {
-    await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getvehiclevariablelist?format=json`)
-        .then(function (response) {
-            setVehicleVariablesList(filteredVehicleVariablesList(response.data.Results));
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .finally(function () {
-            // always executed
-        });
+    setVehicleVariablesList(filteredVehicleVariablesList(variablesList.Results));
+    // await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/getvehiclevariablelist?format=json`)
+    //     .then(function (response) {
+    //
+    //         setVehicleVariablesList(filteredVehicleVariablesList(response.data.Results));
+    //     })
+    //     .catch(function (error) {
+    //         // handle error
+    //         console.log(error);
+    //     })
+    //     .finally(function () {
+    //         // always executed
+    //     });
 }
 
 const filteredResult = (someResult, setAddedResult) => {
