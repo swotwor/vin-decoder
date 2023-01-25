@@ -23,7 +23,7 @@ export const Button = styled.button`
   height: 40px;
   width: 100px;
   ${props => props.isButtonActive
-      ? `background-color: #9eaaff;
+      ? `background-color: #9EAAFF;
          cursor: pointer;`
       : `background-color: grey;
          cursor: default;`

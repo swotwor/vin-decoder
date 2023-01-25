@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {
     Title,
     Header,
-    Wrapper, OpenButton,
+    Wrapper,
+    OpenButton,
 } from "./styledComponents";
 import InfoItem from "./components/infoItem";
 import arrowIcon from './../../../../../assets/termsIcon.svg'
