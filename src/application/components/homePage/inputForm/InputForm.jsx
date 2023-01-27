@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {addedResult} from "../../../redux/reducer";
-import {getSearchResult} from "../../../redux/logic";
+import {addedResult} from "../../../../redux/reducer";
+import {getSearchResult} from "../../../../redux/logic";
 import {
     Input,
     Button,

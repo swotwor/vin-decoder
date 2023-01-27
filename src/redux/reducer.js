@@ -12,10 +12,16 @@ export const questionnaireReducer = (state = defaultState, action) => {
                 ...state,
                 vehicleVariablesList: {...action.payload},
             };
+        case 'SET_CURRENT_DECODE_VIN_INFO':
+            return {
+                ...state,
+                currentDecodeVinInfo: {...action.payload},
+            };
         default:
             return state;
     }
 };
 
 export const addedResult = payload => ({type: 'ADDED_RESULT', payload});
+export const setCurrentDecodeVinInfo = payload => ({type: 'SET_CURRENT_DECODE_VIN_INFO', payload});
 export const setVehicleVariablesList = payload => ({type: 'GET_VEHICLE_VARIABLES_LIST', payload});
