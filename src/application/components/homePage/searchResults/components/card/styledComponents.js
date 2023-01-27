@@ -27,4 +27,5 @@ export const OpenButton = styled.div`
   padding: 3px 5px;
   border-radius: 10px;
   text-align: center;
+  color: black;
 `;

@@ -22,6 +22,7 @@ export const Help = styled.div`
   font-size: 18px;
   line-height: 18px;
   cursor: pointer;
+  color: black;
 `;
 
 export const VinInfoValue = styled.div`

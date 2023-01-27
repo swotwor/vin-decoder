@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     Title,
     Header,
-    Wrapper, OpenButton,
+    Wrapper,
 } from "./styledComponents";
 import InfoItem from "../infoItem";
-import arrowIcon from './../../../../../assets/termsIcon.svg'
 
 const Card = props => {
     const {vinInfo} = props;

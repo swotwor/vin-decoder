@@ -3,7 +3,7 @@ import {Header, Title, Wrapper} from "./styledComponents";
 import {useSelector} from "react-redux";
 import InfoItem from "./components/infoItem";
 
-const FullResultOfDecoding = () => {
+const Variables = () => {
     const state = useSelector(state => state.state);
 
     return (
@@ -24,4 +24,4 @@ const FullResultOfDecoding = () => {
     );
 };
 
-export default FullResultOfDecoding;
+export default Variables;

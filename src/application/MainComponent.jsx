@@ -1,7 +1,8 @@
 import React from 'react';
 import HomePage from "./components/homePage";
+import Variables from "./components/variables";
 import {useDispatch} from "react-redux";
-import FullResultOfDecoding from "./components/fullResultOfDecoding/FullResultOfDecoding";
+import AboutVariables from "./components/aboutVariables";
 import {setVehicleVariablesList} from "../redux/reducer";
 import {getVehicleVariablesList} from "../redux/logic";
 import {
@@ -26,7 +27,8 @@ const MainComponent = () => {
             <InnerContent>
                 <Routes>
                     <Route exact path="/" element={<HomePage/>}/>
-                    <Route exact path="/variables" element={<FullResultOfDecoding/>}/>
+                    <Route exact path="/variables" element={<Variables/>}/>
+                    <Route exact path="/variables/aboutVariables" element={<AboutVariables/>}/>
                 </Routes>
             </InnerContent>
         </Wrapper>
