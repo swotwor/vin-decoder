@@ -26,9 +26,9 @@ const MainComponent = () => {
         <Wrapper>
             <InnerContent>
                 <Routes>
-                    <Route exact path="/" element={<HomePage/>}/>
-                    <Route exact path="/variables" element={<Variables/>}/>
-                    <Route exact path="/variables/aboutVariables" element={<AboutVariables/>}/>
+                    <Route exact path="swotwor.github.io/vinDecoderBuild/" element={<HomePage/>}/>
+                    <Route exact path="swotwor.github.io/vinDecoderBuild/variables" element={<Variables/>}/>
+                    <Route exact path="swotwor.github.io/vinDecoderBuild/variables/aboutVariables" element={<AboutVariables/>}/>
                 </Routes>
             </InnerContent>
         </Wrapper>
