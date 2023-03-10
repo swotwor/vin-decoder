@@ -22,7 +22,7 @@ export const getVehicleVariablesList = async (setVehicleVariablesList) => {
         .catch(function (error) {
             console.log(error);
         })
-}
+};
 
 const filteredResult = (someResult, setAddedResult) => {
     const temporaryStorage = {
