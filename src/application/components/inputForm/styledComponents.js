@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   width: 100%;
   height: max-content;
-  display: flex;
-  justify-content: space-between;
 `;
 
 export const Input = styled.input`
@@ -32,4 +30,9 @@ export const Button = styled.button`
   line-height: 40px;
   text-align: center;
   border-radius: 10px;
+`;
+
+export const FormContainer = styled.form`
+  display: flex;
+  justify-content: space-between;
 `;

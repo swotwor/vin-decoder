@@ -15,3 +15,9 @@ export const Title = styled.header`
 export const Line = styled.div`
   border-bottom: 2px solid grey;
 `;
+
+export const Text = styled.div`
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+`;
