@@ -9,9 +9,13 @@ const ExtendedDescriptionsWindow = props => {
     } = props;
     const state = useSelector(state => state.state);
 
+    function createMarkup(description) {
+        return {__html: description};
+      }
+      
     return (
         <Wrapper onClick={() => handleHoverOnNameVariable()}>
-            {state.vehicleVariablesList[decodeID]}
+            <div dangerouslySetInnerHTML={createMarkup(state.vehicleVariablesList[decodeID])} />
         </Wrapper>
     );
 };
